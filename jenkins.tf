@@ -1,3 +1,19 @@
+
+data "aws_ami" "latest_ami" {
+  most_recent = "true"
+  owners      = ["amzon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
+ filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
+
 resource "aws_instance" "jenkinsserver" {
   ami                         = data.aws_ami.latest_ami.id
   instance_type               = var.instance_type
