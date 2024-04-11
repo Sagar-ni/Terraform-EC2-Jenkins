@@ -1,7 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "my-bucket-for-jenkins-123"
-    region = "us-east-1"
-    key    = "new/terraform.tfstate"
+    bucket = "3-bucket-vpc-ec2-jenkins-project"
+    region = "ap-south-1"
+    key    = "new/terraform.tfstatefile"
   }
 }
+
