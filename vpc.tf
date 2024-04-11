@@ -49,6 +49,7 @@ resource "aws_route_table" "public_route_table" {
   }
   route {
     gateway_id = aws_internet_gateway.myigw.id
+    cidr_block = "0.0.0.0/0"
   }
 }
 
@@ -101,7 +102,6 @@ resource "aws_security_group" "mysg" {
 
 resource "aws_instance" "jenkins_server" {
   ami                         = data.aws_ami.amzn_latest.id
-  availability_zone           = data.aws_availability_zones.available_1.id
   instance_type               = var.instance_type
   subnet_id                   = aws_subnet.public_subnet_1.id
   vpc_security_group_ids      = [aws_security_group.mysg.id]
